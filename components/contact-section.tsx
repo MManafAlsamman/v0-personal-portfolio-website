@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Send, Linkedin, Instagram } from "lucide-react"
+import { Mail, Send, Linkedin, Instagram, Phone } from "lucide-react"
 import { useState } from "react"
 import { useLanguage } from "@/contexts/language-context"
 import Image from "next/image"
@@ -118,7 +118,12 @@ export function ContactSection() {
                 : "امسح للدردشة مع مساعد السيرة الذاتية بالذكاء الاصطناعي"}
             </p>
             <div className="flex justify-center mb-8">
-              <div className="relative p-4 glass-morphism rounded-lg neon-border">
+              <a
+                href="https://chatgpt.com/g/g-685fce84e9fc8191ad0a2a753f5eae0b-lsyr-ldhty-lldktwr-mhmd-lsmn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative p-4 glass-morphism rounded-lg neon-border hover:scale-105 transition-transform cursor-pointer"
+              >
                 <Image
                   src="/qr-code-resume.png"
                   alt="QR Code for AI Resume Assistant"
@@ -126,7 +131,7 @@ export function ContactSection() {
                   height={200}
                   className="rounded-lg"
                 />
-              </div>
+              </a>
             </div>
           </div>
 
@@ -135,6 +140,16 @@ export function ContactSection() {
               {language === "en" ? "Connect with me" : "تواصل معي"}
             </p>
             <div className="flex justify-center gap-4">
+              <Button
+                variant="outline"
+                size="icon"
+                className="glass-morphism hover:bg-primary/10 hover:text-primary transition-all bg-transparent"
+                asChild
+              >
+                <a href="tel:+96871504100" aria-label="Phone">
+                  <Phone className="w-5 h-5" />
+                </a>
+              </Button>
               <Button
                 variant="outline"
                 size="icon"

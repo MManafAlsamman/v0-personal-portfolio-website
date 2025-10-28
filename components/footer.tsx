@@ -13,7 +13,7 @@ export function Footer() {
           <div className="flex items-center gap-2">
             <span className="text-sm text-muted-foreground">Powered by</span>
             <span className="text-primary font-bold" style={{ fontFamily: "var(--font-orbitron)" }}>
-              AI Innovation
+              DR.SAMMAN AI
             </span>
           </div>
         </div>
