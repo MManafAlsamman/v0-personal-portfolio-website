@@ -6,10 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Send, Linkedin, Instagram, Phone, CheckCircle2 } from "lucide-react"
+import { Mail, Send, Linkedin, Instagram, Phone, CheckCircle2, Bot } from "lucide-react"
 import { useState } from "react"
 import { useLanguage } from "@/contexts/language-context"
-import Image from "next/image"
 import { createClient } from "@/lib/supabase/client"
 
 export function ContactSection() {
@@ -164,23 +163,18 @@ export function ContactSection() {
           <div className="mt-12 pt-8 border-t border-border">
             <p className={`text-center text-muted-foreground mb-6 ${language === "ar" ? "font-cairo" : ""}`}>
               {language === "en"
-                ? "Scan to chat with my AI Resume Assistant"
-                : "امسح للدردشة مع مساعد السيرة الذاتية بالذكاء الاصطناعي"}
+                ? "Click on the robot to talk to the AI model about Dr. Muhammad's CV"
+                : "انقر على الروبوت للتحدث مع نموذج الذكاء الاصطناعي حول السيرة الذاتية للدكتور محمد"}
             </p>
             <div className="flex justify-center mb-8">
               <a
                 href="https://chatgpt.com/g/g-685fce84e9fc8191ad0a2a753f5eae0b-lsyr-ldhty-lldktwr-mhmd-lsmn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative p-4 glass-morphism rounded-lg neon-border hover:scale-105 transition-transform cursor-pointer"
+                className="relative p-8 glass-morphism rounded-2xl neon-border hover:scale-110 transition-all duration-300 cursor-pointer group"
               >
-                <Image
-                  src="/qr-code-resume.png"
-                  alt="QR Code for AI Resume Assistant"
-                  width={200}
-                  height={200}
-                  className="rounded-lg"
-                />
+                <Bot className="w-32 h-32 text-primary animate-pulse group-hover:animate-none group-hover:text-accent transition-colors" />
+                <div className="absolute inset-0 bg-primary/5 rounded-2xl blur-xl group-hover:bg-primary/10 transition-all" />
               </a>
             </div>
           </div>
