@@ -53,7 +53,7 @@ export function AboutSection() {
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-green to-neon-blue rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
             <Card className="relative glass-morphism p-2 overflow-hidden">
               <div className="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-cyan-green/20 to-neon-blue/20">
-                <Image src="/professional-ai-expert-portrait-futuristic.jpg" alt="Dr. Mouhammad Samman" fill className="object-cover" />
+                <Image src="/dr-samman-profile.png" alt="Dr. Mouhammad Samman" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
               </div>
             </Card>
