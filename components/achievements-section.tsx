@@ -48,10 +48,16 @@ export function AchievementsSection() {
   ]
 
   const certifications = [
-    { name: "PMP", org: "PMI" },
-    { name: "AICT", org: language === "en" ? "Certified Trainer" : "مدرب معتمد" },
-    { name: "Google ML", org: language === "en" ? "Machine Learning" : "تعلم الآلة" },
-    { name: "AI Executive", org: language === "en" ? "Leadership" : "القيادة" },
+    { name: language === "en" ? "Civil Engineering" : "الهندسة المدنية", org: "2006" },
+    { name: language === "en" ? "Microsoft Systems Engineering" : "هندسة أنظمة مايكروسوفت", org: "2008" },
+    { name: "PhD IT", org: "2015" },
+    { name: "PMI", org: "2019" },
+    { name: language === "en" ? "Google ML Engineer" : "مهندس تعلم آلة جوجل", org: "2023" },
+    { name: language === "en" ? "AI+ Executive" : "AI+ تنفيذي", org: "2025" },
+    {
+      name: language === "en" ? "AICT" : "مدرب معتمد",
+      org: language === "en" ? "Certified Trainer 2025" : "مدرب معتمد 2025",
+    },
   ]
 
   const countries = [
@@ -105,6 +111,24 @@ export function AchievementsSection() {
             )
           })}
         </div>
+
+        {/* Special Recognition for Dubai Future Foundation */}
+        <Card className="glass-morphism p-8 mb-20 text-center border-2 border-cyan-green/30">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <Award className="w-12 h-12" style={{ color: "#00FFD1" }} />
+            <h3
+              className={`text-3xl font-bold ${language === "ar" ? "font-cairo" : "font-orbitron"}`}
+              style={{ color: "#00FFD1" }}
+            >
+              {language === "en" ? "6th in Arab World" : "السادس في العالم العربي"}
+            </h3>
+          </div>
+          <p className={`text-xl text-muted-foreground leading-relaxed ${language === "ar" ? "font-cairo" : ""}`}>
+            {language === "en"
+              ? "Dubai Future Foundation's One Million Arab Programmers - Ranked 6th in both Back-End and Front-End specializations (2018)"
+              : "مؤسسة دبي للمستقبل - مليون مبرمج عربي - المرتبة السادسة في تخصصي الواجهة الخلفية والأمامية (2018)"}
+          </p>
+        </Card>
 
         {/* Certifications Section */}
         <div className="mb-20">

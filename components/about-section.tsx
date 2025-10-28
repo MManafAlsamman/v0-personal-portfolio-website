@@ -1,7 +1,7 @@
 "use client"
 
 import { Card } from "@/components/ui/card"
-import { Award, BookOpen, Briefcase, GraduationCap } from "lucide-react"
+import { Award, BookOpen, GraduationCap } from "lucide-react"
 import Image from "next/image"
 import { useLanguage } from "@/contexts/language-context"
 
@@ -10,19 +10,22 @@ export function AboutSection() {
 
   const milestones = [
     {
-      year: "2003",
+      year: "2006",
+      title: language === "en" ? "Civil Engineering Certificate" : "شهادة الهندسة المدنية",
+      icon: GraduationCap,
+    },
+    {
+      year: "2015",
       title: language === "en" ? "PhD in Information Technology" : "دكتوراه في تكنولوجيا المعلومات",
       icon: GraduationCap,
     },
     {
-      year: "2010",
-      title: language === "en" ? "PMP & AICT Certified Trainer" : "مدرب معتمد PMP و AICT",
+      year: "2018",
+      title:
+        language === "en"
+          ? "6th in Arab World - One Million Arab Programmers"
+          : "السادس في العالم العربي - مليون مبرمج عربي",
       icon: Award,
-    },
-    {
-      year: "2015",
-      title: language === "en" ? "Executive Roles Across MENA" : "مناصب تنفيذية في منطقة الشرق الأوسط",
-      icon: Briefcase,
     },
     {
       year: "2025",
@@ -65,7 +68,7 @@ export function AboutSection() {
                 className={`text-2xl font-bold mb-4 ${language === "ar" ? "font-cairo" : ""}`}
                 style={{ color: "#00FFD1" }}
               >
-                {language === "en" ? "PhD in Information Technology" : "دكتوراه في تكنولوجيا المعلومات"}
+                {language === "en" ? "PhD in Information Technology (2015)" : "دكتوراه في تكنولوجيا المعلومات (2015)"}
               </h3>
               <p className={`text-muted-foreground leading-relaxed ${language === "ar" ? "font-cairo" : ""}`}>
                 {language === "en"
