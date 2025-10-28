@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Send, Linkedin, Instagram, Phone, CheckCircle2, AlertCircle } from "lucide-react"
+import { Mail, Send, Linkedin, Instagram, Phone, CheckCircle2 } from "lucide-react"
 import { useState } from "react"
 import { useLanguage } from "@/contexts/language-context"
 import Image from "next/image"
-import { sendContactEmail } from "@/app/actions/send-email"
+import { createClient } from "@/lib/supabase/client"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ export function ContactSection() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<{
-    type: "success" | "error" | null
+    type: "success" | null
     message: string
   }>({ type: null, message: "" })
 
@@ -32,26 +32,27 @@ export function ContactSection() {
     setSubmitStatus({ type: null, message: "" })
 
     try {
-      const result = await sendContactEmail(formData)
+      const supabase = createClient()
 
-      if (result.success) {
+      const { error } = await supabase.from("contact_messages").insert({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      })
+
+      if (!error) {
         setSubmitStatus({
           type: "success",
-          message: result.message,
+          message:
+            language === "en"
+              ? "Message sent successfully! I'll get back to you soon."
+              : "تم إرسال الرسالة بنجاح! سأتواصل معك قريباً.",
         })
         // Reset form
         setFormData({ name: "", email: "", message: "" })
-      } else {
-        setSubmitStatus({
-          type: "error",
-          message: result.message,
-        })
       }
     } catch (error) {
-      setSubmitStatus({
-        type: "error",
-        message: language === "en" ? "An error occurred. Please try again." : "حدث خطأ. يرجى المحاولة مرة أخرى.",
-      })
+      console.error("Error submitting message:", error)
     } finally {
       setIsSubmitting(false)
     }
@@ -77,19 +78,9 @@ export function ContactSection() {
 
         <Card className="glass-morphism p-8 md:p-12">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {submitStatus.type && (
-              <div
-                className={`p-4 rounded-lg flex items-center gap-3 ${
-                  submitStatus.type === "success"
-                    ? "bg-green-500/10 border border-green-500/20 text-green-400"
-                    : "bg-red-500/10 border border-red-500/20 text-red-400"
-                }`}
-              >
-                {submitStatus.type === "success" ? (
-                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                ) : (
-                  <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                )}
+            {submitStatus.type === "success" && (
+              <div className="p-4 rounded-lg flex items-center gap-3 bg-green-500/10 border border-green-500/20 text-green-400">
+                <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
                 <p className={language === "ar" ? "font-cairo" : ""}>{submitStatus.message}</p>
               </div>
             )}
