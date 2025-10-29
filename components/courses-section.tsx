@@ -248,12 +248,12 @@ export function CoursesSection() {
 
               <div className="relative p-6 space-y-4">
                 {/* Course Title */}
-                <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 min-h-[3.5rem]">
+                <h3 className="text-lg font-semibold text-[#00FFD1] group-hover:text-[#00FFD1]/80 transition-colors line-clamp-2 min-h-[3.5rem]">
                   {course.title[language]}
                 </h3>
 
                 {/* Date */}
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-sm text-violet-400">
                   <Calendar className="w-4 h-4 text-primary" />
                   <span>{course.date[language]}</span>
                 </div>
